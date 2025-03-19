@@ -10,22 +10,6 @@ import { OrdersModule } from './oders/infrastructure/orders/orders.module';
 @Module({
   imports: [
     OrdersModule,
-    ClientsModule.register([
-      {
-        name: 'KAFKA-CLIENT',
-        transport: Transport.KAFKA,
-        options: {
-          client: {
-            brokers: ['localhost:9092'],
-            clientId: 'OdersMs',
-          },
-          producer:{
-            allowAutoTopicCreation: true,
-          },
-          producerOnlyMode: true,
-        },
-      },
-    ]),
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
